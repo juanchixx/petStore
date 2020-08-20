@@ -12,14 +12,14 @@ function App() {
         <Route exact path='/'>
           <span className='inner-text'>Inicio</span>
         </Route>
-        <Route exact path='/productos'>
-          <span className='inner-text'>
-            Productos
-            </span>
-            <h1>Productos</h1>
+        <Route exact path='/ofertas'>
+            <h1>Ofertas</h1>
+        </Route>
+        <Route exact path='/novedades'>
+            <h1>Novedades</h1>
         </Route>
         <Route exact path='/carrito'>
-          <span className='inner-text'>Carrito</span>
+            <h1>Carrito</h1>
         </Route>
       </Switch>
     </BrowserRouter>
