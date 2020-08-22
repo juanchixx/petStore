@@ -1,5 +1,27 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 🏁 Getting Started <a name = "getting_started"></a>
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+You need to have [NodeJS](https://nodejs.org/) installed
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running.
+
+Choose a folder and clone the repository
+
+```
+$ git clone https://github.com/juanchixx/petStore.git
+```
+
+Then install the following dependencies
+
+### npm i create-react-app
+
 ## Available Scripts
 
 In the project directory, you can run:
