@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
+import './style/style.scss'
 import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import { NavBar } from './components/NavBar'
-import 'bootstrap';
+import { Home, Novedades, Ofertas } from './views/index'
+//import 'bootstrap';
 
 function App() {
   return (
@@ -10,13 +12,13 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path='/'>
-          <span className='inner-text'>Inicio</span>
+          <Home />   
         </Route>
         <Route exact path='/ofertas'>
-            <h1>Ofertas</h1>
+          <Ofertas /> 
         </Route>
         <Route exact path='/novedades'>
-            <h1>Novedades</h1>
+          <Novedades /> 
         </Route>
         <Route exact path='/carrito'>
             <h1>Carrito</h1>

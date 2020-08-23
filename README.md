@@ -20,7 +20,9 @@ $ git clone https://github.com/juanchixx/petStore.git
 
 Then install the following dependencies
 
-### npm i create-react-app
+### `npm i create-react-app`
+
+### `npm i node-sass`
 
 ## Available Scripts
 
