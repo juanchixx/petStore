@@ -15,7 +15,7 @@ function Home(){
                     <div className="card-body">
                         <h5 className="card-title">Comida para Perros</h5>
                         <p className="card-text">Pedigree</p>
-                        <ItemCount min={1} max={6} />
+                        <ItemCount initial={2} min={1} max={6} />
                     </div>     
                 </div>             
             

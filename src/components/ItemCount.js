@@ -2,13 +2,15 @@ import React,  {useState} from 'react'
 
 let min = 0;
 let max = 0;
+let initial = 0;
 
 export default function ItemCount(props){
     
     min = props.min;
     max = props.max;
+    initial = props.initial;
 
-    let [count, setCount] = useState(1);
+    let [count, setCount] = useState(initial);
 
     function Add(){
         if(count < max)
@@ -18,7 +20,7 @@ export default function ItemCount(props){
         if(count > min)
             setCount( count - 1);
     }
-    
+
     return(
         <div className="input-group mb-3">
             <div className="input-group-prepend">
