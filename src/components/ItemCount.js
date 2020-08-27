@@ -14,11 +14,11 @@ export default function ItemCount(props){
 
     function Add(){
         if(count < max)
-            setCount( count + 1);
+            setCount( count => count + 1);
     }
     function Substract(){
         if(count > min)
-            setCount( count - 1);
+            setCount( count => count - 1);
     }
 
     return(
