@@ -1,4 +1,5 @@
 import React from 'react';
+import News from '../components/News'
 
 function Novedades(){
     return(
@@ -6,6 +7,7 @@ function Novedades(){
             <h1>
                 Novedades
             </h1>
+            <News/>
         </div>
     );
 }
