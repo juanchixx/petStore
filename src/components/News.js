@@ -1,15 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, {useState} from 'react'
 import NewsItem from './NewsItem';
 
-export default function News(){
+export default function News() {
+    let [arrayNews, setArray] = useState([]);
 
     const noticias = new Promise((resolve, reject) =>{
         setTimeout(() =>{
                 const data = [
-                    <NewsItem title='Nuevos Productos' description='Se han agregadon nuevos productos'/>,
-                    <NewsItem title='Como mejorar la educación de tu perro' description='Te brindamos tips, para mejorar el comportamiento de tu mascota'/>,
-                    <NewsItem title='Definiendo el mejor alimento' description='Analizamos cuál es el alimento más apto para tu perro'/>
+                    { title:'Nuevos Productos', description:'Se han agregadon nuevos productos'},
+                    { title:'Como mejorar la educación de tu perro', description:'Te brindamos tips, para mejorar el comportamiento de tu mascota'},
+                    { title:'Definiendo el mejor alimento',description:'Analizamos cuál es el alimento más apto para tu perro'}
                 ]
                 resolve(data);
             }, 3000);
@@ -17,12 +17,12 @@ export default function News(){
 
     noticias.then((result) => {
         console.log(result);
-        ReactDOM.render(result, document.getElementById('noticias'));
+        setArray(() => result.map((newsItem) => <NewsItem title= {newsItem.title} description= {newsItem.description} />));
     });
 
     return(
         <div id='noticias'>
-            
+            {arrayNews}
         </div>
     )
 };
