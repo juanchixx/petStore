@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemDetailContainer from '../components/ItemDetailContainer'
+import OfertasContainer from '../components/OfertasContainer';
 
 function Ofertas(){
     return(
@@ -7,7 +7,7 @@ function Ofertas(){
             <h1>
                 Ofertas!
             </h1>
-            <ItemDetailContainer/>
+            <OfertasContainer/>
         </div>
     );
 }

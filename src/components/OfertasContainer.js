@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ItemDetail from './ItemDetail';
 
-export default function ItemDetailContainer(props) {
+export default function OfertasContainer(props) {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -15,7 +15,7 @@ export default function ItemDetailContainer(props) {
                 }, 3000);
         })
         .then(response => {
-        const dat = response;
+        const dat = response.filter((item) => item.oferta === true);
             setData(dat);
             setLoading(false);
         })
