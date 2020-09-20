@@ -1,15 +1,37 @@
+$gris1: #333333;
+$grisclaro: #EBEBEB;
+
 body{
-    background-color: #FBAB7E;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);        
+    background-color: $grisclaro;
 }
 
 h1{
-    color: #FFFFFF;
+    color: $gris1;
 }
-
-a:hover {
+a{
+    color: $gris1;
+}
+a:hover {   
     color: #ff6b00;
     text-decoration: none;
+}
+
+.price::before {
+    content: '$ ';
+}
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+.price {
+    align-self: flex-end;
+    position: absolute;
+    right: 0;
+    margin-bottom: 10px;
+    background: #000000d1;
+    padding: 3px 8px;
+    border-radius: 5px 0px 0px 5px;
+    color: #FFFFFF;
+    font-weight: 600;
 }
 
 .container{

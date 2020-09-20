@@ -10,7 +10,6 @@ export default function ItemDetailContainer(props) {
         new Promise((resolve, reject) =>{
             setTimeout(() =>{
                     const data = require('../data/data.json');
-                    console.log(data.data);
                     resolve(data.data);
                 }, 3000);
         })
@@ -30,7 +29,7 @@ export default function ItemDetailContainer(props) {
 
       return (
           <div className='d-flex'>
-              {data.map((item) => <ItemDetail id={item.id} title={item.title} description={item.description} initial={item.initial} min={item.min} max={item.max} img={item.img}/>)}
+              {data.map((item) => <ItemDetail key={item.id} id={item.id} title={item.title} description={item.description} initial={item.initial} min={item.min} max={item.max} img={item.img} price={item.price}/>)}
           </div>
       );
 }

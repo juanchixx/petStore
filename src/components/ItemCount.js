@@ -1,24 +1,24 @@
-import React,  {useState} from 'react'
+import React,  {useEffect, useState} from 'react'
 
-let min = 0;
-let max = 0;
-let initial = 0;
-
-export default function ItemCount(props){
+export default function ItemCount(props){        
+    const min = props.min;
+    const max = props.max;
+    const initial = props.initial;
     
-    min = props.min;
-    max = props.max;
-    initial = props.initial;
+    const [counter, setCounter] = useState(initial);
 
-    let [count, setCount] = useState(initial);
+
 
     function Add(){
-        if(count < max)
-            setCount( count => count + 1);
+        if(counter < max)
+            setCounter(counter + 1);
+        props.updateCount(counter);
     }
-    function Substract(){
-        if(count > min)
-            setCount( count => count - 1);
+
+    const Substract = () => {
+        if(counter > min)
+            setCounter(counter - 1);
+        props.updateCount(counter);
     }
 
     return(
@@ -26,7 +26,7 @@ export default function ItemCount(props){
             <div className="input-group-prepend">
                 <button onClick={Substract} className="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
             </div>
-            <input type="text" className="form-control text-center" placeholder="" aria-label="Example text with button addon" value={count} aria-describedby="button-addon1"/>
+            <input type="text" className="form-control text-center" placeholder=""  value={counter} readOnly/>
             <div className="input-group-prepend">
                 <button onClick={Add} className="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
             </div>

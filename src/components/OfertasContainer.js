@@ -30,7 +30,7 @@ export default function OfertasContainer(props) {
 
       return (
           <div className='d-flex'>
-              {data.map((item) => <ItemDetail id={item.id} title={item.title} description={item.description} initial={item.initial} min={item.min} max={item.max} img={item.img}/>)}
+              {data.map((item) => <ItemDetail id={item.id} title={item.title} description={item.description} initial={item.initial} min={item.min} max={item.max} img={item.img} price={item.price}/>)}
           </div>
       );
 }

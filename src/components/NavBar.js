@@ -6,7 +6,7 @@ import CartIcon from '../images/CartIcon'
 
 export function NavBar(){
     return(
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-warning">
             <NavLink to='/' className="navbar-brand">
                  <img src={logo} alt='logo' width="30" height="30" className='d-inline-block align-top' loading="lazy"/>
             </NavLink>
