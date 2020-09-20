@@ -7,18 +7,18 @@ export default function ItemCount(props){
     
     const [counter, setCounter] = useState(initial);
 
-
+    useEffect(()=>
+        props.updateCount(counter), [counter]
+    )
 
     function Add(){
         if(counter < max)
-            setCounter(counter + 1);
-        props.updateCount(counter);
+            setCounter(counter => counter + 1);
     }
 
     const Substract = () => {
         if(counter > min)
-            setCounter(counter - 1);
-        props.updateCount(counter);
+            setCounter(counter => counter - 1);
     }
 
     return(

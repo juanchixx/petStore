@@ -11,8 +11,6 @@ export default function Item(){
     
     function updateCounter(c){
         setCounter(c);
-        console.log(c);
-       // document.getElementById('btnComprar').innerText = 'Comprar ' + c;
     }
 
     const item = data.data.filter((item) => item.id.toString() === id).map((it) => 
