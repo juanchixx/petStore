@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ItemDetail from './ItemDetail';
+import dataset from '../data/data'
 
 export default function OfertasContainer(props) {
     const [data, setData] = useState([]);
@@ -8,14 +9,12 @@ export default function OfertasContainer(props) {
     useEffect(() => {
         setLoading(true);   
         new Promise((resolve, reject) =>{
-            setTimeout(() =>{
-                    const data = require('../data/data.json');
-                    console.log(data.data);
-                    resolve(data.data);
+            setTimeout(() =>{                    
+                    resolve(dataset);                    
                 }, 3000);
         })
         .then(response => {
-        const dat = response.filter((item) => item.oferta === true);
+        const dat = response.filter(item => item.oferta === true);
             setData(dat);
             setLoading(false);
         })
