@@ -3,13 +3,15 @@ import { useParams } from 'react-router-dom';
 import ItemCount from '../components/ItemCount'
 import {CartContext} from '../context/cartContext'
 import data from '../data/data'
-
 export default function Item(){
-
+    
     const [counter, setCounter] = useState(0);
-    const { products, setProducts } = useContext(CartContext);
+    const { products, setProducts, idVenta, setIdVenta } = useContext(CartContext);
     const { id } = useParams();
-    const { product, setProduct} = useState(data[id]);
+
+    useEffect(() => {
+       
+    }, [products])
 
     function updateCounter(c){
         setCounter(c);
@@ -26,6 +28,8 @@ export default function Item(){
                 <div className="col-4">
                     <h1>{it.title}</h1>
                     <h4>{it.description}</h4>
+                    <br></br>
+                    <h3>$ {it.price}</h3>
                     <span>Cantidad:</span>
                     <ItemCount initial={it.initial} min={it.min} max={it.max} updateCount={updateCounter} />
 <button className='btn btn-primary' key={it.id} id='btnComprar' onClick={Comprar} disabled={!counter}>Comprar {counter ? counter : ""}</button>
@@ -33,9 +37,12 @@ export default function Item(){
             </div>
         </div>
     
-    function Comprar(){       
-        setProducts([...products, data[id] ]);
-        console.log(products);
+    function Comprar(){  
+        const product = it;
+        product.cantidad = counter;
+        setIdVenta(idVenta => idVenta + 1);
+        product.key = idVenta;
+        setProducts([...products, product ]);   
     }
 
     return(

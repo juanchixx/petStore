@@ -3,7 +3,7 @@ import './App.css';
 import './style/style.scss'
 import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import { NavBar } from './components/NavBar'
-import { Home, Novedades, Ofertas, Item } from './views/index'
+import { Home, Novedades, Ofertas, Item, Carrito } from './views/index'
 import CartProvider from './context/cartContext'
 
 //import 'bootstrap';
@@ -27,7 +27,7 @@ function App() {
             <Item /> 
           </Route>
           <Route exact path='/carrito'>
-              <h1>Carrito</h1>
+            <Carrito /> 
           </Route>
         </Switch>
       </CartProvider>

@@ -11,7 +11,7 @@ export default function ItemDetailContainer(props) {
         new Promise((resolve, reject) =>{
             setTimeout(() =>{                    
                     resolve(dataset);                    
-                }, 3000);
+                }, 1000);
         })
         .then(response => {
         const dat = response;
