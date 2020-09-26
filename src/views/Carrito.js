@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { CartContext }  from '../context/cartContext';
 import ItemCart from '../components/ItemCart';
+import dogIcon from '../images/dog.svg'
+import { NavLink } from 'react-router-dom';
 
 export default function Carrito(){
     const { products } = useContext(CartContext);
@@ -17,7 +19,14 @@ export default function Carrito(){
                     <h4>Total: $ {totalProducts}</h4>
                 </div>
                 </>
-                : <h4>No hay items cargados en el carrito</h4>}
+                : <>
+                    <h4>No hay items cargados en el carrito</h4>
+                    <NavLink to={'/'} className="card m-2 hoverable shadow-sm" style={{width: "500px"}}>
+                        <div className="d-flex p-3 align-items-center">
+                            <img src={dogIcon} className="mr-4"  style={{height: "50px"}}/> Busca acá todos los productos para tus mascotas.
+                        </div>
+                    </NavLink>
+                </>}
         </div>
     )
 }
