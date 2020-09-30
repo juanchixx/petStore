@@ -16,7 +16,6 @@ export default function News() {
     });
 
     noticias.then((result) => {
-        console.log(result);
         setArray(() => result.map((newsItem) => <NewsItem title= {newsItem.title} description= {newsItem.description} />));
     });
 

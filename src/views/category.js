@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import Welcome from '../components/welcome'
+import { useParams } from 'react-router-dom';
 import ItemDetailContainer from '../components/ItemDetailContainer';
 
-
-function Home(props){
+function Category(props){
     const [data, setData] = useState([]);
-
+    const { id } = useParams();
     useEffect(() => {        
-        setData(props.data);
+        setData(props.data.filter((item) => item.categoryId === id));
       }, [props.data]);
       
 
     return(
         <div className="container">
             <h1>
-                <Welcome nombre='Juan' app='petStore'/>
+                Categoría: {id}
             </h1>
                 <ItemDetailContainer data={data}/>                      
         </div>
     );
 }
 
-export default Home;
+export default Category;

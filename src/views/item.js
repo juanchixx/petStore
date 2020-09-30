@@ -1,24 +1,51 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import ItemCount from '../components/ItemCount'
 import {CartContext} from '../context/cartContext'
-import data from '../data/data'
+import { getFirestore } from '../firebase';
+
 export default function Item(){
-    
-    const [counter, setCounter] = useState(0);
-    const { products, setProducts, idVenta, setIdVenta } = useContext(CartContext);
+
+    const [it, setData] = useState([]);
     const { id } = useParams();
+    const [loading, setLoading] = useState(true);
+    const spinner = (<div class="d-flex justify-content-center">
+    <div class="spinner-border text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>);
+    const [idVenta, setIdVenta] = useState(0);
 
     useEffect(() => {
-       
-    }, [products])
+        setLoading(true);   
+        const db = getFirestore();
+        const itemCollection = db.collection("Products");
+        const item = itemCollection.doc(id);
+        item.get().then((doc) =>{
+            if(!doc.exists){
+                console.log('No existe este item');
+            }
+            setData({id: doc.id, ...doc.data()})
+        }).catch((error) =>{
+            console.log('Error buscando Productos', error);
+        }).finally(() => {
+          
+            setLoading(false);
+        })
+      }, [])
+    
+      useEffect(() => {
+      }, [it])
+      
+    const [counter, setCounter] = useState(0);
+    const { products, setProducts } = useContext(CartContext);
 
     function updateCounter(c){
         setCounter(c);
     }
-    const it = data[id];
+    
     const item = 
-        <div className='container' key={it.id}>
+        <div className='container' >
             <div className="row itemContainer">
                 <div className="col-8">
                     <img src={it.img} className='img-fluid' alt='ProductImage'/>
@@ -26,13 +53,16 @@ export default function Item(){
                     <span>{it.detail}</span>
                 </div>
                 <div className="col-4">
+                    <NavLink to={'/category/'+ it.categoryId} >
+                    <span class="badge badge-pill badge-warning">{it.categoryId}</span>
+                    </NavLink>
                     <h1>{it.title}</h1>
                     <h4>{it.description}</h4>
                     <br></br>
                     <h3>$ {it.price}</h3>
                     <span>Cantidad:</span>
                     <ItemCount initial={it.initial} min={it.min} max={it.max} updateCount={updateCounter} />
-<button className='btn btn-primary' key={it.id} id='btnComprar' onClick={Comprar} disabled={!counter}>Comprar {counter ? counter : ""}</button>
+<button className='btn btn-primary' id='btnComprar' onClick={Comprar} disabled={!counter}>Comprar {counter ? counter : ""}</button>
                 </div>
             </div>
         </div>
@@ -47,7 +77,7 @@ export default function Item(){
 
     return(
         <div>
-            {item}
+            {loading ? spinner : item } 
         </div>
     )
 }

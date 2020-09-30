@@ -4,7 +4,6 @@ export default function ItemCount(props){
     const min = props.min;
     const max = props.max;
     const initial = props.initial;
-    
     const [counter, setCounter] = useState(initial);
 
     useEffect(()=>
