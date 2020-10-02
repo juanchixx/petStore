@@ -23,7 +23,7 @@ function App() {
             if(querySnapshot.size === 0){
                 console.log('Sin resultados');
             }
-            setData(querySnapshot.docs.map(doc => doc.data()))
+            setData(querySnapshot.docs.map(doc => {return {id: doc.id, ...doc.data()}}))
         }).catch((error) =>{
             console.log('Error buscando Productos', error);
         }).finally(() => {
