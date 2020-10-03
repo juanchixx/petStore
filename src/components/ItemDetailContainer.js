@@ -10,7 +10,7 @@ export default function ItemDetailContainer(props) {
 
 
       return (
-          <div className='d-flex'>
+          <div className='d-flex flex-wrap'>
               {data.map((item) => <ItemDetail key={item.id} id={item.id} title={item.title} description={item.description} initial={item.initial} min={item.min} max={item.max} img={item.img} price={item.price}/>)}
           </div>
       );

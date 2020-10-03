@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import ItemCount from '../components/ItemCount'
+import Spinner from '../components/Spinner'
 import {CartContext} from '../context/cartContext'
 import { getFirestore } from '../firebase';
 
@@ -9,11 +10,6 @@ export default function Item(){
     const [it, setData] = useState([]);
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
-    const spinner = (<div class="d-flex justify-content-center">
-    <div class="spinner-border text-warning" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>);
     const [idVenta, setIdVenta] = useState(0);
 
     useEffect(() => {
@@ -54,15 +50,20 @@ export default function Item(){
                 </div>
                 <div className="col-4">
                     <NavLink to={'/category/'+ it.categoryId} >
-                    <span class="badge badge-pill badge-warning">{it.categoryId}</span>
+                    <span className="badge badge-pill badge-warning">{it.categoryId}</span>
                     </NavLink>
                     <h1>{it.title}</h1>
                     <h4>{it.description}</h4>
                     <br></br>
                     <h3>$ {it.price}</h3>
-                    <span>Cantidad:</span>
-                    <ItemCount initial={it.initial} min={it.min} max={it.max} updateCount={updateCounter} />
-<button className='btn btn-primary' id='btnComprar' onClick={Comprar} disabled={!counter}>Comprar {counter ? counter : ""}</button>
+                    { it.stock === 0 ? 
+                        <span className="badge badge-danger">Sin Stock</span> : 
+                        <> 
+                            <span>Cantidad:</span>
+                            <ItemCount initial={it.initial} min={it.min} max={it.stock} updateCount={updateCounter} />
+                            <button className='btn btn-primary' id='btnComprar' onClick={Comprar} disabled={!counter}>Comprar {counter ? counter : ""}</button>
+                        </>
+                    }
                 </div>
             </div>
         </div>
@@ -77,7 +78,7 @@ export default function Item(){
 
     return(
         <div>
-            {loading ? spinner : item } 
+            {loading ? <Spinner/> : item } 
         </div>
     )
 }

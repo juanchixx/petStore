@@ -41,8 +41,17 @@ a:hover {
 
 .itemContainer{
     background: #FFFFFF;
-    border-radius: 5px;
     padding: 25px;
+}
+
+.itemContainer:first-child {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.itemContainer:last-child {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #noticias div{
@@ -57,4 +66,7 @@ a:hover {
 
 .img-thumbnail{
     height: 100px;
+}
+a:hover {
+    cursor: pointer;
 }

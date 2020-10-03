@@ -6,6 +6,7 @@ import { NavBar } from './components/NavBar'
 import { Home, Novedades, Ofertas, Item, Carrito, Category } from './views/index'
 import CartProvider from './context/cartContext'
 import {getFirestore} from './firebase'
+import Spinner from './components/Spinner';
 
 
 //import 'bootstrap';
@@ -35,24 +36,18 @@ function App() {
       useEffect(() => {
       }, [data])
 
-  const spinner = (<div class="d-flex justify-content-center">
-  <div class="spinner-border text-warning" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>);
-
   return (
     <BrowserRouter>
 
       <CartProvider>
       <NavBar />
-        {loading ? spinner :
+        {loading ? <Spinner/> :
         <Switch>
           <Route exact path='/'>
             <Home data={data}/>   
           </Route>
           <Route exact path='/ofertas'>
-            <Ofertas /> 
+            <Ofertas/> 
           </Route>
           <Route exact path='/novedades'>
             <Novedades /> 
