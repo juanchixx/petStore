@@ -3,7 +3,7 @@ import './App.css';
 import './style/style.scss'
 import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import { NavBar } from './components/NavBar'
-import { Home, Novedades, Ofertas, Item, Carrito, Category } from './views/index'
+import { Home, Ofertas, Item, Carrito, Category, Busqueda } from './views/index'
 import CartProvider from './context/cartContext'
 import {getFirestore} from './firebase'
 import Spinner from './components/Spinner';
@@ -20,7 +20,7 @@ function App() {
         setLoading(true);   
         const db = getFirestore();
         const itemCollection = db.collection("Products");
-        itemCollection.get().then((querySnapshot) =>{
+        itemCollection.limit(3).get().then((querySnapshot) =>{
             if(querySnapshot.size === 0){
                 console.log('Sin resultados');
             }
@@ -49,14 +49,14 @@ function App() {
           <Route exact path='/ofertas'>
             <Ofertas/> 
           </Route>
-          <Route exact path='/novedades'>
-            <Novedades /> 
-          </Route>
           <Route path='/item/:id'>
             <Item/> 
           </Route>
           <Route path='/category/:id'>
-            <Category data={data}/>   
+            <Category/>   
+          </Route>
+          <Route path='/results'>
+            <Busqueda data={data}/>   
           </Route>
           <Route exact path='/carrito'>
             <Carrito /> 

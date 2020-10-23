@@ -70,3 +70,19 @@ a:hover {
 a:hover {
     cursor: pointer;
 }
+.dropdown:hover>.dropdown-menu {
+    display: block;
+  }
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #f19342;
+}
+.imgItem {
+    display: flex;
+    height: 300px;
+    justify-content: center;
+}
+.img-fluid{
+    object-fit: contain;
+}

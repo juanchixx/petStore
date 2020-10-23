@@ -11,10 +11,14 @@ import Spinner from '../components/Spinner';
 
 export default function Carrito(){
     const { products, setProducts } = useContext(CartContext);
-    const data = products;  
+    const data = products;
 
     const totalProducts = data.reduce((total, item) => total + (item.price * item.cantidad), 0);
     const [loading, setLoading] = useState(false);
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+
     const [pedidoRealizado, setPedidoRealizado] = useState();
     useEffect(() => {
     }, [pedidoRealizado])
@@ -25,9 +29,9 @@ export default function Carrito(){
 
         const orders = db.collection("orders");
         const userInfo = {
-            "name": document.getElementById('nombre').value,
-            "phone": document.getElementById('phone').value,
-            "email": document.getElementById('email').value
+            "name": name,
+            "phone": phone,
+            "email": email
         }
     
         const newOrder = {
@@ -123,15 +127,15 @@ export default function Carrito(){
                     <div className="form-row">
                         <div className="form-group col-md-4">
                         <label htmlFor="nombre">Nombre</label>
-                        <input type="text" className="form-control" id="nombre"/>
+                        <input type="text" className="form-control" id="nombre" value={name} onChange={(event) => setName(event.target.value)}/>
                         </div>
                         <div className="form-group col-md-4">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" id="email"/>
+                        <input type="email" className="form-control" id="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
                         </div>
                         <div className="form-group col-md-4">
                         <label htmlFor="phone">Teléfono</label>
-                        <input type="phone" className="form-control" id="phone"/>
+                        <input type="phone" className="form-control" id="phone" value={phone} onChange={(event) => setPhone(event.target.value)}/>
                         </div>
                     </div>
                     <button type='submit' className="btn btn-primary">Realizar pedido</button>

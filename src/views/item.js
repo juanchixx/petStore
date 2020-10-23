@@ -44,9 +44,9 @@ export default function Item(){
         <div className='container' >
             <div className="row itemContainer">
                 <div className="col-8">
-                    <img src={it.img} className='img-fluid' alt='ProductImage'/>
-                    <hr/>
-                    <span>{it.detail}</span>
+                    <div className='imgItem'>
+                        <img src={it.img} className='img-fluid' alt='ProductImage'/>
+                    </div>
                 </div>
                 <div className="col-4">
                     <NavLink to={'/category/'+ it.categoryId} >
@@ -65,6 +65,9 @@ export default function Item(){
                         </>
                     }
                 </div>
+            </div>
+            <div className="row itemContainer">
+                <span>{it.detail}</span>
             </div>
         </div>
     
