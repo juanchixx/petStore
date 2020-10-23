@@ -26,7 +26,7 @@ Then install the following dependencies
 
 ### Enviroment Docs
 
-You need to set the [Enviroment Variables]('./docs/Enviroment.md') First in order to work
+You need to set the [Enviroment Variables](docs/Enviroment.md) First in order to work
 
 
 ## Available Scripts
